@@ -1,0 +1,653 @@
+background(255,255,255);
+
+//Bitmoji Design Code
+var drawBitmoji = function(bitmojiX,bitmojiY,bitmojiH,backgroundColor){
+noStroke();
+
+//T-Shirt
+fill(0,0,0);
+quad(bitmojiX-(bitmojiH/83*45), bitmojiY+(bitmojiH/83*45), bitmojiX+(bitmojiH/83*46), bitmojiY+(bitmojiH/83*45), bitmojiX+(bitmojiH/83*60), bitmojiY+(bitmojiH/83*80), bitmojiX-(bitmojiH/83*59), bitmojiY+(bitmojiH/83*80));
+
+noStroke();
+//head
+fill(255,224,189);
+ellipse(bitmojiX,bitmojiY,bitmojiH/83*83,bitmojiH/83*100);
+
+//left ear indent
+fill(backgroundColor);
+arc(bitmojiX-(bitmojiH/83*41),bitmojiY+(bitmojiH/83*35),bitmojiH/83*22,bitmojiH/83*60,181,360);
+
+//right ear indent
+fill(backgroundColor);
+arc(bitmojiX+(bitmojiH/83*41),bitmojiY+(bitmojiH/83*35),bitmojiH/83*22,bitmojiH/83*60,181,360);
+
+//nose
+stroke(0,0,0);
+fill(255,224,189);
+strokeWeight(1);
+bezier(bitmojiX,bitmojiY+(bitmojiH/83*9),bitmojiX+(bitmojiH/83*21),bitmojiY+(bitmojiH/83*28),bitmojiX-(bitmojiH/83*8),bitmojiY+(bitmojiH/83*30),bitmojiX-(bitmojiH/83*4),bitmojiY+(bitmojiH/83*20));
+
+//hat
+noStroke();
+fill(16, 0, 94);
+arc(bitmojiX,bitmojiY-(bitmojiH/83*3),bitmojiH/83*83,bitmojiH/83*100,181,360);
+
+//hair
+fill(232, 160, 102);
+arc(bitmojiX,bitmojiY-(bitmojiH/83*2),bitmojiH/83*70,bitmojiH/83*50,181,360);
+
+//glasses-wireleft
+noFill();
+strokeWeight(2);
+stroke(0,0,0);
+line(bitmojiX-(bitmojiH/83*22),bitmojiY-(bitmojiH/83*1),bitmojiX-(bitmojiH/83*42),bitmojiY-(bitmojiH/83*1));
+
+//glasses-wireright
+fill(0, 0, 0);
+line(bitmojiX+(bitmojiH/83*22),bitmojiY-(bitmojiH/83*1),bitmojiX+(bitmojiH/83*41),bitmojiY-(bitmojiH/83*1));
+
+//glasses-frameleft
+noFill();
+stroke(0,0,0);
+rect(bitmojiX-(bitmojiH/83*22),bitmojiY-(bitmojiH/83*1),bitmojiH/83*18,bitmojiH/83*11);
+
+//glasses-frameright
+rect(bitmojiX+(bitmojiH/83*4),bitmojiY-(bitmojiH/83*1),bitmojiH/83*18,bitmojiH/83*11);
+
+//glasses-wirecenter;
+line(bitmojiX-(bitmojiH/83*3),bitmojiY-(bitmojiH/83*1),bitmojiX+(bitmojiH/83*5),bitmojiY-(bitmojiH/83*1));
+
+//eyeleft
+fill(82, 82, 82);
+ellipse(bitmojiX-(bitmojiH/83*12),bitmojiY+(bitmojiH/83*4),bitmojiH/83*6,bitmojiH/83*5);
+
+//eyeright
+fill(82, 82, 82);
+ellipse(bitmojiX+(bitmojiH/83*14),bitmojiY+(bitmojiH/83*4),bitmojiH/83*6,bitmojiH/83*5);
+
+//smile
+stroke(0,0,0);
+strokeWeight(1);
+noFill();
+arc(bitmojiX,bitmojiY+(bitmojiH/83*30),bitmojiH/83*30,bitmojiH/83*20,47,130);
+
+//initial Z Shirt
+stroke(255,255,255);
+strokeWeight(2);
+line(bitmojiX-(bitmojiH/83*27),bitmojiY+(bitmojiH/83*53),bitmojiX-(bitmojiH/83*7),bitmojiY+(bitmojiH/83*53));
+line(bitmojiX-(bitmojiH/83*7),bitmojiY+(bitmojiH/83*53),bitmojiX-(bitmojiH/83*27),bitmojiY+(bitmojiH/83*70));
+line(bitmojiX-(bitmojiH/83*27),bitmojiY+(bitmojiH/83*70),bitmojiX-(bitmojiH/83*7),bitmojiY+(bitmojiH/83*70));
+
+//initial W Shirt
+line(bitmojiX+(bitmojiH/83*7),bitmojiY+(bitmojiH/83*53),bitmojiX+(bitmojiH/83*13),bitmojiY+(bitmojiH/83*70));
+line(bitmojiX+(bitmojiH/83*13),bitmojiY+(bitmojiH/83*70),bitmojiX+(bitmojiH/83*19),bitmojiY+(bitmojiH/83*53));
+line(bitmojiX+(bitmojiH/83*19),bitmojiY+(bitmojiH/83*53),bitmojiX+(bitmojiH/83*26),bitmojiY+(bitmojiH/83*70));
+line(bitmojiX+(bitmojiH/83*26),bitmojiY+(bitmojiH/83*70),bitmojiX+(bitmojiH/83*32),bitmojiY+(bitmojiH/83*53));
+
+//initial Z Hat
+stroke(255,255,255);
+strokeWeight(2);
+line(bitmojiX-(bitmojiH/83*18),bitmojiY-(bitmojiH/83*40),bitmojiX-(bitmojiH/83*7),bitmojiY-(bitmojiH/83*40));
+line(bitmojiX-(bitmojiH/83*7),bitmojiY-(bitmojiH/83*40),bitmojiX-(bitmojiH/83*18),bitmojiY-(bitmojiH/83*30));
+line(bitmojiX-(bitmojiH/83*18),bitmojiY-(bitmojiH/83*30),bitmojiX-(bitmojiH/83*7),bitmojiY-(bitmojiH/83*30));
+
+//initial W Hat
+line(bitmojiX+(bitmojiH/83*2),bitmojiY-(bitmojiH/83*40),bitmojiX+(bitmojiH/83*6),bitmojiY-(bitmojiH/83*30));
+line(bitmojiX+(bitmojiH/83*6),bitmojiY-(bitmojiH/83*30),bitmojiX+(bitmojiH/83*10),bitmojiY-(bitmojiH/83*40));
+line(bitmojiX+(bitmojiH/83*10),bitmojiY-(bitmojiH/83*40),bitmojiX+(bitmojiH/83*15),bitmojiY-(bitmojiH/83*30));
+line(bitmojiX+(bitmojiH/83*15),bitmojiY-(bitmojiH/83*30),bitmojiX+(bitmojiH/83*18),bitmojiY-(bitmojiH/83*40));
+fill(0, 0, 0);
+};
+
+//Button Object courtesy in part of Khan Academy "A Button object type".
+
+//Sets text within the button relative to the position of the button
+fill(0, 0, 0);
+textSize(20);
+textAlign(CENTER);
+
+//Constructor for the dimensions of my Bitmoji 
+var bitmoji = function(x, y, h, backgroundColor) {
+    this.x = x;
+    this.y = y;
+    this.width = h;
+    this.backgroundColor = backgroundColor;
+};
+
+//Draws my bitmoji
+bitmoji.prototype.draw = function() {
+    drawBitmoji(this.x, this.y, this.width, this.backgroundColor);
+};
+
+//Constructor for the dimensions of the robot and player 2 
+var player2 = function(x, y, h, avatar) {
+    this.x = x;
+    this.y = y;
+    this.width = h;
+    this.avatar = avatar;
+};
+
+//Draws player2
+player2.prototype.draw = function() {
+    image(this.avatar, this.x, this.y, this.width, this.width);
+};
+
+//Constructor for the dimensions of the stars
+var stars = function(x, y, h) {
+    this.x = x;
+    this.y = y;
+    this.speed = random(1,3);
+};
+
+//Draws celebration stars for P1
+stars.prototype.draw = function() {
+    image(getImage("cute/Star"), this.x, this.y, 50, 50);
+};
+
+var celebration1 = [];
+for (var i = 0; i < 50; i++) {  
+    celebration1.push(new stars(random(10, 140), i * 70 + 390));
+    
+}
+
+var celebration2 = [];
+for (var i = 0; i < 50; i++) {  
+    celebration2.push(new stars(random(200, 330), i * 70 + 390));
+    
+}
+
+
+//Constructor that establishes the properties of all buttons.
+var Button = function(config) {
+    this.x = config.x;
+    this.y = config.y;
+    this.width = config.width || 87;
+    this.height = config.height || 30;
+    this.label = config.label;
+    this.onClick = config.onClick;
+    this.color = config.color || color(250, 140, 250);
+};
+
+
+//Draws all button with properties from constructor
+Button.prototype.draw = function() {
+    fill(this.color);
+    rect(this.x, this.y, this.width, this.height, 5);
+    fill(0, 0, 0);
+    textSize(17);
+    textAlign(CENTER, TOP);
+    text(this.label, this.x+43, this.y+this.height/10);
+};
+
+//Separate method for specifically changing color from default.
+Button.prototype.changeColor = function(newColor) {
+    this.color = newColor;
+    fill(this.color);
+};
+
+
+//Method that allows the program to detect if the mouse is within the button's dimensions.
+Button.prototype.isMouseInside = function() {
+    return mouseX > this.x &&
+           mouseX < (this.x + this.width) &&
+           mouseY > this.y &&
+           mouseY < (this.y + this.height);
+};
+
+//Method that allows for the onClick to be used only if mouse is inside as defined above.
+Button.prototype.handleMouseClick = function() {
+    if (this.isMouseInside()) {
+        this.onClick();
+    }
+};
+
+//Scene code courtesy in part of of Khan Academy "Challenge: Story Teller".
+
+//Variable that allows causes currentScene to exist be set later.
+var currentScene;
+
+//Draws the first scene.
+var drawScene1 =function(){
+    //Background Color.
+    background(255, 255, 255);
+    
+    //Current scene value to keep everything in one scene.
+    currentScene = 1;
+    
+    //Draws my bitmoji.
+    drawBitmoji(200, 60, 45);
+    
+    //The text color, Header, name and ID, and instructions in that order.
+    fill(0, 0, 0);
+    text("ZW Clicker!", 0, 10, 400, 400);
+    textSize(13);
+    text("By Zachary Waskowicz (ID ***0)", 145, 110, 120, 100);
+    textSize(15);
+    text("Compete against a robot or a friend to see who can click the most in twenty seconds!  Think you have what it takes to click the fastest? Try against a robot to practice with the 1 Player button, or compete against a friend with the 2 Player button.  Player 1 presses LMB, Player 2 presses SPACEBAR.", 15, 150, 370, 370);
+};
+
+var countDown = false;
+var timer = false;
+var frames = 0;
+var seconds = 0;
+var Easy = false;
+var Medium = false;
+var Hard = false;
+
+
+//Variables for the 1 Player game.
+var drawScene1Player =function(){
+  
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    var P1 = new bitmoji(100, 250, 45);
+    var robot = new player2(260, 215, 80);
+    if(Easy === true){
+        robot.avatar = getImage("avatars/robot_female_1");
+    }
+    else if(Medium === true){
+        robot.avatar = getImage("avatars/robot_male_1");
+    }
+    else if(Hard === true){
+        robot.avatar = getImage("avatars/robot_female_2");
+    }
+    
+    //Current scene value to keep everything within one scene.
+    currentScene = 2;
+    countDown = true;
+    var score1 = 0;
+    var score2 = 0;
+
+//Establishes that properties of the specified buttons when clicked on will occur on mouse click.
+    
+
+//Draws all the buttons and changes their colors from default.
+    draw = function() {
+        
+        background(255, 255, 255);
+        if(score1 >= 35 && score1 < 70){
+           fill(0, 255, 72);
+           P1.backgroundColor = color(0, 255, 72);
+           rect(0, 0, 200, 400);
+        }
+        else if(score1 >= 70 && score1 < 105){
+            fill(255, 183, 0);
+            P1.backgroundColor = color(255, 183, 0);
+           rect(0, 0, 200, 400);
+        }
+        else if(score1 >= 105){
+            fill(255, 84, 84);
+            P1.backgroundColor = color(255, 84, 84);
+           rect(0, 0, 200, 400);
+        }
+        
+        if(score2 >= 35 && score2 < 70){
+           fill(0, 255, 72);
+           rect(200, 0, 200, 400);
+        }
+        else if(score2 >= 70 && score2 < 105){
+            fill(255, 183, 0);
+           rect(200, 0, 200, 400);
+        }
+        else if(score2 >= 105){
+            fill(255, 84, 84);
+           rect(200, 0, 200, 400);
+        }
+        
+        P1.draw();
+        robot.draw();
+        
+        mouseReleased = function() {
+        if(mouseReleased && currentScene === 2 && timer === true){
+            score1++;
+            P1.width = 42;
+            
+        }
+    };
+        if(mouseIsPressed && currentScene === 2 && timer === true){
+            P1.width = 45;
+        }
+        
+        if(Easy === true && currentScene === 2 && timer === true){
+            score2 += 0.06;
+        }
+        
+        if(Medium === true && currentScene === 2 && timer === true){
+            score2 += 0.08;
+        }
+        
+        if(Hard === true && currentScene === 2 && timer === true){
+            score2 += 0.09;
+        }
+        
+        
+        if(currentScene === 2 && countDown === true){
+           //sets the time in seconds (in game), dividing frames by itself to get seconds.
+            frameRate(120);
+            frames--;
+            seconds = round(frames/120);
+            textSize(100);
+            text(round(3 + seconds), 95, 95, 200, 200);
+        }
+        
+        if(seconds === -3){
+                    countDown = false;
+                    timer = true;
+                }
+                
+        if(score1 >= 130){
+            for (var i = 0; i < celebration1.length; i++) {
+            celebration1[i].draw();
+                if(timer === true){
+                celebration1[i].y -= celebration1[i].speed;
+                    if(celebration1[i].y <= -100){
+                        celebration1[i].y = i * 70 + 390;
+                    }
+                }
+            }
+        }
+        
+        if(score2 >= 130){
+            for (var i = 0; i < celebration2.length; i++) {
+            celebration2[i].draw();
+                if(timer === true){
+                celebration2[i].y -= celebration2[i].speed;
+                    if(celebration2[i].y <= -100){
+                        celebration2[i].y = i * 70 + 390;
+                    }
+                }
+            }
+        }
+        
+        var robotScore = round(score2);
+        if(currentScene === 2 && timer === true){
+           //sets the time in seconds (in game), dividing frames by itself to get seconds.
+            frameRate(120);
+            frames++;
+            seconds = 2 + round(frames/120);
+            //Sets the text for the time and attempt counters.
+            textSize(20);
+        text("In game time (seconds): " + seconds, 145, 10);
+        text("Player 1 score: " + score1, 105, 350);
+        text("Robot score: " + robotScore, 295, 350);
+        }
+        
+        
+        
+        
+        if(seconds === 20){
+            timer = false;
+            
+            text("Game Over! Restart to try again!", 200, 200);
+            //Sets the text for the time and attempt counters.
+            textSize(20);
+        text("In game time (seconds): " + seconds, 145, 10);
+        text("Player 1 score: " + score1, 100, 350);
+        text("Robot score: " + robotScore, 300, 350);
+            if(score1 > score2){
+                text("Player 1 wins!", 200, 100);
+            }
+            else if(score1 < score2){
+                text("Robot wins!", 200, 100);
+            }
+        }
+        
+    };
+};
+
+var drawSceneZ =function(){
+    //Background color
+    background(0, 171, 137);
+    noStroke();
+    //Current scene value to keep everything within one scene.
+    currentScene = 4;
+
+    //Establishes the properties of the Red button, including placement, button text, and function when clicked in that order.
+    var btnR = new Button({
+        x: 150,
+        y: 100,
+        label: "Warm-Up",
+        onClick: function() {
+            draw = function() {
+            Easy = true;
+              drawScene1Player();
+            };
+        }
+    });
+    
+    
+    //Establishes the properties of the Green button, including placement, button text, and function when clicked in that order.
+    var btnG = new Button({
+        x: 150,
+        y: 200,
+        label: "Possible",
+        onClick: function() {
+            Medium = true;
+            drawScene1Player();
+        }
+    });
+
+
+        //Establishes the properties of the Green button, including placement, button text, and function when clicked in that order.
+    var btnB = new Button({
+        x: 150,
+        y: 300,
+        label: "Impossible",
+        onClick: function() {
+            Hard = true;
+            drawScene1Player();
+            
+        }
+    });
+
+//Establishes that properties of the specified buttons when clicked on will occur on mouse click.
+    mouseClicked = function() {
+        if(currentScene === 4){
+            btnR.handleMouseClick();
+            btnG.handleMouseClick();
+            btnB.handleMouseClick();
+        }
+    };
+
+//Draws all the buttons and changes their colors from default.
+    draw = function() {
+        if(currentScene === 4){
+            btnR.draw();
+            btnR.changeColor(color(0, 255, 174));
+            btnG.draw();
+            btnG.changeColor(color(132, 255, 0));
+            btnB.draw();
+            btnB.changeColor(color(255, 25, 25));
+        }
+    };
+};
+
+//Variables for the 2 player game.
+var drawScene2Player =function(){
+    //Background color
+    fill(0, 0, 0);
+    stroke(0, 0, 0);
+    var P1 = new bitmoji(100, 250, 45, color(255, 255, 255));
+    var P2 = new player2(250, 220, 80, getImage("creatures/Hopper-Cool"));
+    
+    
+    
+    //Current scene value to keep everything within one scene.
+    currentScene = 3;
+    countDown = true;
+    var score1 = 0;
+    var score2 = 0;
+
+    //Establishes that properties of the specified buttons when clicked on will occur on mouse click.
+    
+
+
+    //Draws all the buttons and changes their colors from default.
+    draw = function() {
+        
+        background(255, 255, 255);
+        if(score1 >= 35 && score1 < 70){
+           fill(0, 255, 72);
+           P1.backgroundColor = color(0, 255, 72);
+           rect(0, 0, 200, 400);
+        }
+        else if(score1 >= 70 && score1 < 105){
+            fill(255, 183, 0);
+            P1.backgroundColor = color(255, 183, 0);
+           rect(0, 0, 200, 400);
+        }
+        else if(score1 >= 105){
+            fill(255, 84, 84);
+            P1.backgroundColor = color(255, 84, 84);
+           rect(0, 0, 200, 400);
+        }
+        
+        if(score2 >= 35 && score2 < 70){
+           fill(0, 255, 72);
+           rect(200, 0, 200, 400);
+        }
+        else if(score2 >= 70 && score2 < 105){
+            fill(255, 183, 0);
+           rect(200, 0, 200, 400);
+        }
+        else if(score2 >= 105){
+            fill(255, 84, 84);
+           rect(200, 0, 200, 400);
+        }
+        
+        P1.draw();
+        P2.draw();
+        mouseReleased = function() {
+        if(mouseReleased && currentScene === 3 && timer === true){
+            score1++;
+            P1.width = 42;
+            
+        }
+    };
+        if(mouseIsPressed && currentScene === 3 && timer === true){
+            P1.width = 45;
+        }
+        
+        keyReleased = function() {
+        if(keyReleased && key.code === 32 && currentScene === 3 && timer === true){
+            score2++;
+            P2.width = 77;
+        }
+    };
+        if(keyTyped && currentScene === 3 && timer === true){
+            P2.width = 80;
+        }
+        
+        if(currentScene === 3 && countDown === true){
+           //sets the time in seconds (in game), dividing frames by itself to get seconds.
+            frameRate(120);
+            frames--;
+            seconds = round(frames/120);
+            textSize(100);
+            text(round(3 + seconds), 95, 95, 200, 200);
+        }
+        
+        if(seconds === -3){   
+                    countDown = false;
+                    timer = true;
+                }
+                
+        if(score1 >= 130){
+            for (var i = 0; i < celebration1.length; i++) {
+            celebration1[i].draw();
+                if(timer === true){
+                celebration1[i].y -= celebration1[i].speed;
+                    if(celebration1[i].y <= -100){
+                        celebration1[i].y = i * 70 + 390;
+                    }
+                }
+            }
+        }
+        
+        if(score2 >= 130){
+            for (var i = 0; i < celebration2.length; i++) {
+            celebration2[i].draw();
+                if(timer === true){
+                celebration2[i].y -= celebration2[i].speed;
+                    if(celebration2[i].y <= -100){
+                        celebration2[i].y = i * 70 + 390;
+                    }
+                }
+            }
+        }
+        
+        if(currentScene === 3 && timer === true){
+           //sets the time in seconds (in game), dividing frames by itself to get seconds.
+            frameRate(120);
+            frames++;
+            seconds = 2 + round(frames/120);
+            //Sets the text for the time and attempt counters.
+            textSize(20);
+        text("In game time (seconds): " + seconds, 145, 10);
+        text("Player 1 score: " + score1, 105, 350);
+        text("Player 2 score: " + score2, 295, 350);
+        }
+        
+        if(seconds === 20){
+            timer = false;
+            
+            text("Game Over! Restart to try again!", 200, 200);
+            //Sets the text for the time and attempt counters.
+            textSize(20);
+        text("In game time (seconds): " + seconds, 145, 10);
+        text("Player 1 score: " + score1, 100, 350);
+        text("player 2 score: " + score2, 300, 350);
+            if(score1 > score2){
+                text("Player 1 wins!", 200, 100);
+            }
+            else if(score1 < score2){
+                text("Player 2 wins!", 200, 100);
+            }
+        }
+        
+    };
+};
+
+//Draws the default scene in the beginning as scene 1, starting the user with the intro screen every reset.
+drawScene1();
+
+    //Establishes the properties of the Trace Z button, including placement, button text, and function when clicked in that order.
+var btn1 = new Button({
+    x: 63,
+    y: 300,
+    label: "1 Player",
+    onClick: function() {
+        drawSceneZ();
+       
+    }
+});
+
+
+    //Establishes the properties of the Trace W button, including placement, button text, and function when clicked in that order.
+var btn2 = new Button({
+    x: 253,
+    y: 300,
+    label: "2 Player",
+    onClick: function() {
+        drawScene2Player();
+       
+    }
+});
+
+//Establishes that properties of the specified buttons when clicked on will occur on mouse click.
+mouseClicked = function() {
+    if(currentScene === 1){
+    btn1.handleMouseClick();
+    btn2.handleMouseClick();
+    }
+};
+
+//Draws the buttons in their positions for scene 1.
+draw = function() {
+    if(currentScene === 1){
+    btn1.draw();
+    btn1.changeColor(color(255, 66, 107));
+    btn2.draw();
+    btn2.changeColor(color(66, 145, 255));
+    }
+};
