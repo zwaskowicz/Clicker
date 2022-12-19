@@ -144,6 +144,7 @@ stars.prototype.draw = function() {
     image(getImage("cute/Star"), this.x, this.y, 50, 50);
 };
 
+//Arrays and for loops that spawn and limit celebratory stars when drawn.
 var celebration1 = [];
 for (var i = 0; i < 50; i++) {  
     celebration1.push(new stars(random(10, 140), i * 70 + 390));
@@ -223,9 +224,11 @@ var drawScene1 =function(){
     textSize(13);
     text("By Zachary Waskowicz (ID ***0)", 145, 110, 120, 100);
     textSize(15);
-    text("Compete against a robot or a friend to see who can click the most in twenty seconds!  Think you have what it takes to click the fastest? Try against a robot to practice with the 1 Player button, or compete against a friend with the 2 Player button.  Player 1 presses LMB, Player 2 presses SPACEBAR.", 15, 150, 370, 370);
+    text("Compete against a robot or a friend to see who can click the most in twenty seconds!  Think you have what it takes to click the fastest? Practice against a robot with the 1 Player button, or compete against a friend with the 2 Player button.  Player 1 presses the left mouse button (LMB), Player 2 presses SPACEBAR.", 15, 150, 370, 370);
 };
 
+
+//Various global variables which are activated and inactivated as the game progresses.  The first two set wether or not the countdown or timer are active, the second two are measures of time (to count up to 20), and the final three set which difficulty is selected in the 1 Player mode.
 var countDown = false;
 var timer = false;
 var frames = 0;
@@ -235,11 +238,13 @@ var Medium = false;
 var Hard = false;
 
 
-//Variables for the 1 Player game.
+//Variables for the 1 Player game scene.
 var drawScene1Player =function(){
-  
+    
     fill(0, 0, 0);
     stroke(0, 0, 0);
+    
+    //Drawing my bitmoji and robots, with easy medium and hard robots being set to their respective difficulties when they're made true/false
     var P1 = new bitmoji(100, 250, 45);
     var robot = new player2(260, 215, 80);
     if(Easy === true){
@@ -254,16 +259,17 @@ var drawScene1Player =function(){
     
     //Current scene value to keep everything within one scene.
     currentScene = 2;
+    
+    //establishes that on game start, the countdown is active and the scores for each player are 0.
     countDown = true;
     var score1 = 0;
     var score2 = 0;
 
-//Establishes that properties of the specified buttons when clicked on will occur on mouse click.
-    
 
-//Draws all the buttons and changes their colors from default.
+    //Animates various aspects of the 1 player game scene.
     draw = function() {
         
+        //Sets the backgrounds at different score values for each player.  35 turns yellow, 70 turns orange, 105 turns red.
         background(255, 255, 255);
         if(score1 >= 35 && score1 < 70){
            fill(0, 255, 72);
@@ -294,9 +300,11 @@ var drawScene1Player =function(){
            rect(200, 0, 200, 400);
         }
         
+        //Draws P1 and Robots
         P1.draw();
         robot.draw();
         
+        //Causes the score to count up when the mouse is released, and creates the visual of compressing player 1 when clicked and released.
         mouseReleased = function() {
         if(mouseReleased && currentScene === 2 && timer === true){
             score1++;
@@ -308,6 +316,7 @@ var drawScene1Player =function(){
             P1.width = 45;
         }
         
+        //Establishes the score increases for easy, medium, and hard.  Referred to as "Warm-up, Possible, and Impossible".
         if(Easy === true && currentScene === 2 && timer === true){
             score2 += 0.06;
         }
@@ -320,7 +329,7 @@ var drawScene1Player =function(){
             score2 += 0.09;
         }
         
-        
+        //Allows the countdown to occur, subtracting from seconds until it equals -3 (visually appears as 0).
         if(currentScene === 2 && countDown === true){
            //sets the time in seconds (in game), dividing frames by itself to get seconds.
             frameRate(120);
@@ -330,11 +339,13 @@ var drawScene1Player =function(){
             text(round(3 + seconds), 95, 95, 200, 200);
         }
         
+        //Changes from countDown scene to timer scene once -3 is reached for seconds.  This starts the game.
         if(seconds === -3){
                     countDown = false;
                     timer = true;
                 }
-                
+             
+             //Makes the stars appear from bottom to top once score equals or exceeds 130 for player 1.  
         if(score1 >= 130){
             for (var i = 0; i < celebration1.length; i++) {
             celebration1[i].draw();
@@ -347,6 +358,7 @@ var drawScene1Player =function(){
             }
         }
         
+        //Makes the stars appear from bottom to top once score equals or exceeds 130 for player 2.
         if(score2 >= 130){
             for (var i = 0; i < celebration2.length; i++) {
             celebration2[i].draw();
@@ -359,6 +371,7 @@ var drawScene1Player =function(){
             }
         }
         
+        //Generalizes the robot scores to prevent conflict with player 2 scene.
         var robotScore = round(score2);
         if(currentScene === 2 && timer === true){
            //sets the time in seconds (in game), dividing frames by itself to get seconds.
@@ -374,7 +387,7 @@ var drawScene1Player =function(){
         
         
         
-        
+        //Ends the game once time equals 20, puts up the game over screen and the "Player X wins" depending on who had the highest score at the end.
         if(seconds === 20){
             timer = false;
             
@@ -395,15 +408,17 @@ var drawScene1Player =function(){
     };
 };
 
-var drawSceneZ =function(){
+
+//Scene creation variable for the difficulty select screen.
+var drawSceneDiff =function(){
     //Background color
     background(0, 171, 137);
     noStroke();
     //Current scene value to keep everything within one scene.
     currentScene = 4;
 
-    //Establishes the properties of the Red button, including placement, button text, and function when clicked in that order.
-    var btnR = new Button({
+    //Establishes the properties of the easy mode button, including placement, button text, and function when clicked in that order.
+    var btnEasy = new Button({
         x: 150,
         y: 100,
         label: "Warm-Up",
@@ -416,8 +431,8 @@ var drawSceneZ =function(){
     });
     
     
-    //Establishes the properties of the Green button, including placement, button text, and function when clicked in that order.
-    var btnG = new Button({
+    //Establishes the properties of the medium mode button, including placement, button text, and function when clicked in that order.
+    var btnMed = new Button({
         x: 150,
         y: 200,
         label: "Possible",
@@ -428,8 +443,8 @@ var drawSceneZ =function(){
     });
 
 
-        //Establishes the properties of the Green button, including placement, button text, and function when clicked in that order.
-    var btnB = new Button({
+        //Establishes the properties of the hard mode button, including placement, button text, and function when clicked in that order.
+    var btnHard = new Button({
         x: 150,
         y: 300,
         label: "Impossible",
@@ -440,24 +455,24 @@ var drawSceneZ =function(){
         }
     });
 
-//Establishes that properties of the specified buttons when clicked on will occur on mouse click.
+    //Establishes that properties of the specified buttons when clicked on will occur on mouse click.
     mouseClicked = function() {
         if(currentScene === 4){
-            btnR.handleMouseClick();
-            btnG.handleMouseClick();
-            btnB.handleMouseClick();
+            btnEasy.handleMouseClick();
+            btnMed.handleMouseClick();
+            btnHard.handleMouseClick();
         }
     };
 
-//Draws all the buttons and changes their colors from default.
+    //Draws all the buttons and changes their colors from default.
     draw = function() {
         if(currentScene === 4){
-            btnR.draw();
-            btnR.changeColor(color(0, 255, 174));
-            btnG.draw();
-            btnG.changeColor(color(132, 255, 0));
-            btnB.draw();
-            btnB.changeColor(color(255, 25, 25));
+            btnEasy.draw();
+            btnEasy.changeColor(color(0, 255, 174));
+            btnMed.draw();
+            btnMed.changeColor(color(132, 255, 0));
+            btnHard.draw();
+            btnHard.changeColor(color(255, 25, 25));
         }
     };
 };
@@ -467,6 +482,8 @@ var drawScene2Player =function(){
     //Background color
     fill(0, 0, 0);
     stroke(0, 0, 0);
+    
+    //variables to allow P1 and P2 to be drawn.
     var P1 = new bitmoji(100, 250, 45, color(255, 255, 255));
     var P2 = new player2(250, 220, 80, getImage("creatures/Hopper-Cool"));
     
@@ -474,18 +491,18 @@ var drawScene2Player =function(){
     
     //Current scene value to keep everything within one scene.
     currentScene = 3;
+    
+    //Makes countDown happen once scene is opened and sets starting scores to 0.
     countDown = true;
     var score1 = 0;
     var score2 = 0;
 
-    //Establishes that properties of the specified buttons when clicked on will occur on mouse click.
-    
 
-
-    //Draws all the buttons and changes their colors from default.
+    //Animates various aspects of the 2 player game screen.
     draw = function() {
-        
         background(255, 255, 255);
+        
+        //Sets the backgrounds at different score values for each player.  35 turns yellow, 70 turns orange, 105 turns red.
         if(score1 >= 35 && score1 < 70){
            fill(0, 255, 72);
            P1.backgroundColor = color(0, 255, 72);
@@ -515,8 +532,11 @@ var drawScene2Player =function(){
            rect(200, 0, 200, 400);
         }
         
+        //Draws P1 and P2 in the 2 player game scene.
         P1.draw();
         P2.draw();
+        
+        //Allows the score for P1 and P2 to increase when LMB (for P1) or SPACEBAR (for P2) are clicked.  Also compresses their respective icons when pressed and released.
         mouseReleased = function() {
         if(mouseReleased && currentScene === 3 && timer === true){
             score1++;
@@ -538,6 +558,7 @@ var drawScene2Player =function(){
             P2.width = 80;
         }
         
+        //Allows the countdown to occur, subtracting from seconds until it equals -3 (visually appears as 0).
         if(currentScene === 3 && countDown === true){
            //sets the time in seconds (in game), dividing frames by itself to get seconds.
             frameRate(120);
@@ -547,11 +568,13 @@ var drawScene2Player =function(){
             text(round(3 + seconds), 95, 95, 200, 200);
         }
         
+        //ends the counDown and starts the timer once countdown ends.  Seconds = -3, but visually it will appear as 0.
         if(seconds === -3){   
                     countDown = false;
                     timer = true;
                 }
-                
+               
+        //allows stars to spawn from bottom to top once score equals or exceeds 130 for Player 1. 
         if(score1 >= 130){
             for (var i = 0; i < celebration1.length; i++) {
             celebration1[i].draw();
@@ -564,6 +587,7 @@ var drawScene2Player =function(){
             }
         }
         
+        //allows stars to spawn from bottom to top once score equals or exceeds 130 for Player 2.
         if(score2 >= 130){
             for (var i = 0; i < celebration2.length; i++) {
             celebration2[i].draw();
@@ -588,6 +612,7 @@ var drawScene2Player =function(){
         text("Player 2 score: " + score2, 295, 350);
         }
         
+        //Causes 2 player game scene to end once timer hits 20.  Flashes the Game Over text, as well as text corresponding to who won and who lost based on which player had the highest score at 20 seconds.
         if(seconds === 20){
             timer = false;
             
@@ -611,19 +636,19 @@ var drawScene2Player =function(){
 //Draws the default scene in the beginning as scene 1, starting the user with the intro screen every reset.
 drawScene1();
 
-    //Establishes the properties of the Trace Z button, including placement, button text, and function when clicked in that order.
+    //Establishes the properties of the 1 Player button, including placement, button text, and function when clicked in that order.
 var btn1 = new Button({
     x: 63,
     y: 300,
     label: "1 Player",
     onClick: function() {
-        drawSceneZ();
+        drawSceneDiff();
        
     }
 });
 
 
-    //Establishes the properties of the Trace W button, including placement, button text, and function when clicked in that order.
+    //Establishes the properties of the 2 Player button, including placement, button text, and function when clicked in that order.
 var btn2 = new Button({
     x: 253,
     y: 300,
