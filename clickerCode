@@ -99,9 +99,7 @@ line(bitmojiX+(bitmojiH/83*15),bitmojiY-(bitmojiH/83*30),bitmojiX+(bitmojiH/83*1
 fill(0, 0, 0);
 };
 
-//Button Object courtesy in part of Khan Academy "A Button object type".
-
-//Sets text within the button relative to the position of the button
+//ZW Clicker! Text alignment and properties
 fill(0, 0, 0);
 textSize(20);
 textAlign(CENTER);
@@ -157,6 +155,7 @@ for (var i = 0; i < 50; i++) {
     
 }
 
+//Button Object courtesy in part of Khan Academy "A Button object type".
 
 //Constructor that establishes the properties of all buttons.
 var Button = function(config) {
@@ -216,7 +215,8 @@ var drawScene1 =function(){
     currentScene = 1;
     
     //Draws my bitmoji.
-    drawBitmoji(200, 60, 45);
+    var screenBitmoji = new bitmoji(200, 60, 45);
+    screenBitmoji.draw();
     
     //The text color, Header, name and ID, and instructions in that order.
     fill(0, 0, 0);
